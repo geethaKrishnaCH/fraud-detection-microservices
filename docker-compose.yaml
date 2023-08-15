@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:15.3-alpine3.17
+    environment:
+      - POSTGRES_USER=easylearnz
+      - POSTGRES_PASSWORD=easylearnz
+      - PGDATA=/var/lib/postgresql/data
+    volumes:
+      - microservice_postgres_data:/var/lib/postgresql/data
+    ports:
+      - 5431:5432
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+volumes:
+  microservice_postgres_data:

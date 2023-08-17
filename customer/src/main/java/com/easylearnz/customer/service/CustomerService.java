@@ -3,13 +3,13 @@ package com.easylearnz.customer.service;
 import com.easylearnz.customer.dto.CustomerRegistrationRequest;
 import com.easylearnz.customer.model.Customer;
 import com.easylearnz.customer.repository.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class CustomerService {
-    @Autowired
-    CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
 
     public void registerCustomer(CustomerRegistrationRequest request) {
         Customer customer = Customer.builder()
